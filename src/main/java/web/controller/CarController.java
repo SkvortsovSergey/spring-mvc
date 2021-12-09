@@ -3,6 +3,7 @@ package web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Car;
 import web.service.CarsService;
 
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 public class CarController {
 
     @GetMapping("/cars")
-    public String cars (HttpServletRequest request, Model model) {
+    public String cars (@RequestParam(value = "count", defaultValue = "5")Integer count, Model model) {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car("LADA", "1.6", "Baklajan"));
         cars.add(new Car("Peugeot", "2", "Grey"));
@@ -23,7 +24,7 @@ public class CarController {
         cars.add(new Car("Kia", "1,6", "Red"));
         cars.add(new Car("Kia", "1,6", "Blue"));
         cars.add(new Car("Kia", "1,6", "White"));
-        model.addAttribute("cars", CarsService.carsCount(cars, Integer.parseInt(request.getParameter("count"))));
+        model.addAttribute("cars", CarsService.carsCount(cars, count));
         return "car";
     }
 
