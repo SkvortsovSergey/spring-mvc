@@ -32,12 +32,13 @@ public class UserDaoHibernateImpl implements UserDao {
     }
 
     @Override
-    public void update (User user) {
+    public void update (User user, long id) {
+        user.setId(id);
         entityManager.merge(user);
     }
 
     @Override
     public User getUserById (long id) {
-        return entityManager.find(User.class,id);
+        return entityManager.find(User.class, id);
     }
 }

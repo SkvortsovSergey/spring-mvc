@@ -25,22 +25,6 @@ public class User {
     @Column
     private Byte age;
 
-    public Long getId () {
-        return id;
-    }
-
-    public String getName () {
-        return name;
-    }
-
-    public String getLastName () {
-        return lastName;
-    }
-
-    public Byte getAge () {
-        return age;
-    }
-
     public User (String name, String lastName, Byte age) {
         this.name = name;
         this.lastName = lastName;

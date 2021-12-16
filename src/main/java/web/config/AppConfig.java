@@ -42,7 +42,7 @@ public class AppConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean () {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(getDataSource());
@@ -52,17 +52,19 @@ public class AppConfig {
 
         return em;
     }
+
     @Bean
-    public PlatformTransactionManager transactionManager() {
+    public PlatformTransactionManager transactionManager () {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(getEntityManagerFactoryBean().getObject());
         return jpaTransactionManager;
     }
-    public Properties getHibernateProperties() {
+
+    public Properties getHibernateProperties () {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-        return  properties;
+        return properties;
     }
 }
