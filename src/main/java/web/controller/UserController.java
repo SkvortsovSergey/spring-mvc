@@ -18,7 +18,7 @@ public class UserController {
     }
 
 
-    @GetMapping(value = "/")
+    @GetMapping(value = {"/", "/index"})
     public String index (Model model) {
         model.addAttribute("usersList", userService.getAllUsers());
         return "index";

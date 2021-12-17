@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Добавляем нового пользователя</title>
@@ -10,13 +10,13 @@
 
 <form th:method="POST" th:action="@{/user}" th:object="${user}">
     <label for="name">Имя</label>
-    <input name="name" th:field="*{name}" id="name"/>
+    <input type = "text" th:field="*{name}" id="name"/>
     <br><br>
     <label for="surname">Фамилия</label>
-    <input name="surname" th:field="*{lastName}" id="surname"/>
+    <input type = "text" th:field="*{lastName}" id="surname"/>
     <br><br>
     <label for="age">Возраст</label>
-    <input name="age" th:field="*{age}" id="age"/>
+    <input type = "text" th:field="*{age}" id="age"/>
     <br><br>
     <input type="submit" value="Добавить">
     <br><br>
