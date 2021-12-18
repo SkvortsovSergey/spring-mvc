@@ -10,9 +10,9 @@ import web.service.UserService;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserService userService;
 
+    private final UserService userService;
+    @Autowired
     public UserController (UserService userService) {
         this.userService = userService;
     }
@@ -36,7 +36,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/update")
     public String getUser (@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "/update";
@@ -46,5 +46,10 @@ public class UserController {
     public String newUser (Model model) {
         model.addAttribute("user", new User());
         return "user";
+    }
+    @PostMapping("/user")
+    public String saveUser(@ModelAttribute("user") User user) {
+        userService.addUser(user);
+        return "redirect:/";
     }
 }
